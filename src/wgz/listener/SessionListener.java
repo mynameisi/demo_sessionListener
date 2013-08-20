@@ -21,6 +21,9 @@ public class SessionListener implements HttpSessionListener {
 	}
 
 	public void sessionCreated(HttpSessionEvent event) {
+		//因为有些新的Session的创建是由于不同用户的点击
+		//所以调用sessionCreated的线程也就不同
+		//所以要保持同步，否则就会出现多线程同时对数据修改导致的异常
 		synchronized (this) {
 			logger.debug("Session计数 +1");
 			sessionCount++;
