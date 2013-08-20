@@ -9,6 +9,7 @@
 <body>
 	<h1>创建了一个Session</h1>
 	<ul>
+		
 		<li>Session ID: <%=session.getId()%></li>
 		<li>Session创建时间: <%=new Date(session.getCreationTime())%>
 		<li>Session上次访问时间: <%=new Date(session.getLastAccessedTime())%> 

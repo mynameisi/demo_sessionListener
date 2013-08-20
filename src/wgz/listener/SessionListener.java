@@ -18,21 +18,22 @@ public class SessionListener implements HttpSessionListener {
 	private int sessionCount = 0;
 
 	public SessionListener() {
-		// TODO Auto-generated constructor stub
 	}
 
 	public void sessionCreated(HttpSessionEvent event) {
 		synchronized (this) {
+			logger.debug("Session计数 +1");
 			sessionCount++;
 		}
-		logger.debug("有一个Session被创建，现在有：" + sessionCount + "个Session");
+		logger.debug("现在有：" + sessionCount + "个Session");
 	}
 
 	public void sessionDestroyed(HttpSessionEvent event) {
 		synchronized (this) {
+			logger.debug("Session计数 -1");
 			sessionCount--;
 		}
-		logger.debug("有一个Session被销毁，还剩下：" + sessionCount + "个Session");
+		logger.debug("现在有：" + sessionCount + "个Session");
 	}
 
 }
